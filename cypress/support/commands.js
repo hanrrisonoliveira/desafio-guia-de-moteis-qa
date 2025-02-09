@@ -10,8 +10,8 @@ Cypress.Commands.add('preencherFormulario', (nome, email, confirmarEmail, senha)
         }
     }
 
-    preencherOuLimpar(formularioLocators.nome, nome);
-    preencherOuLimpar(formularioLocators.email, email);
-    preencherOuLimpar(formularioLocators.confirmarEmail, confirmarEmail);
-    preencherOuLimpar(formularioLocators.senha, senha);
+    preencherOuLimpar(formularioLocators.nome, nome)
+    preencherOuLimpar(formularioLocators.email, email)
+    preencherOuLimpar(formularioLocators.confirmarEmail, confirmarEmail)
+    preencherOuLimpar(formularioLocators.senha, senha, { log: false })
 })

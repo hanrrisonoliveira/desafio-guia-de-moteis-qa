@@ -8,4 +8,5 @@ export const formularioLocators = {
     erroEmail: '[data-cy="erro-email"]',
     erroEmailConfirmacao: '[data-cy="erro-confirmar-email"]',
     erroSenha: '[data-cy="erro-senha"]',
+    cadastroRealizado: '[data-cy="mensagem-sucesso"]'
 }
