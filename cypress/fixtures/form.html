@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .form-container img {
+            max-width: 100px;
+            margin-bottom: 20px;
+        }
+        .form-container h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+        .error {
+            color: red;
+            font-size: 0.875em;
+            margin-top: 5px;
+            display: none;
+        }
+        .success {
+            color: green;
+            font-size: 1em;
+            margin-top: 15px;
+            display: none;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="../assets/logo.png" alt="Logo do Guia de Motéis">
+        <h1>Cadastro</h1>
+        <form id="formularioCadastro" novalidate>
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" data-cy="input-nome" required>
+                <span class="error" id="erroNome" data-cy="erro-nome">O nome é obrigatório.</span>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" data-cy="input-email" required>
+                <span class="error" id="erroEmail" data-cy="erro-email">O e-mail é obrigatório.</span>
+            </div>
+            <div class="form-group">
+                <label for="confirmarEmail">Confirmação de E-mail</label>
+                <input type="email" id="confirmarEmail" name="confirmarEmail" data-cy="input-confirmar-email" required>
+                <span class="error" id="erroConfirmarEmail" data-cy="erro-confirmar-email">Os e-mails não coincidem.</span>
+            </div>
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" data-cy="input-senha" required>
+                <span class="error" id="erroSenha" data-cy="erro-senha">A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula e 1 número.</span>
+            </div>
+            <button type="submit" data-cy="botao-submit">Cadastrar</button>
+            <span class="success" id="mensagemSucesso" data-cy="mensagem-sucesso">Cadastro realizado com sucesso!</span>
+        </form>
+    </div>
+
+    <script>
+        const formulario = document.getElementById('formularioCadastro');
+
+        formulario.addEventListener('submit', function(evento) {
+            evento.preventDefault();
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const confirmarEmail = document.getElementById('confirmarEmail').value.trim();
+            const senha = document.getElementById('senha').value;
+
+            let valido = true;
+
+            // Validação de nome
+            const erroNome = document.getElementById('erroNome');
+            if (!nome) {
+                valido = false;
+                erroNome.style.display = 'block';
+            } else {
+                erroNome.style.display = 'none';
+            }
+
+            // Validação de e-mail
+            const erroEmail = document.getElementById('erroEmail');
+            const erroConfirmarEmail = document.getElementById('erroConfirmarEmail');
+            if (!email) {
+                valido = false;
+                erroEmail.textContent = 'O e-mail é obrigatório.';
+                erroEmail.style.display = 'block';
+            } else if (email !== confirmarEmail) {
+                valido = false;
+                erroEmail.textContent = '';
+                erroConfirmarEmail.style.display = 'block';
+            } else {
+                erroEmail.style.display = 'none';
+                erroConfirmarEmail.style.display = 'none';
+            }
+
+            // Validação de senha
+            const erroSenha = document.getElementById('erroSenha');
+            const regexSenha = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+            if (!regexSenha.test(senha)) {
+                valido = false;
+                erroSenha.style.display = 'block';
+            } else {
+                erroSenha.style.display = 'none';
+            }
+
+            const mensagemSucesso = document.getElementById('mensagemSucesso');
+            if (valido) {
+                mensagemSucesso.style.display = 'block';
+                formulario.reset();
+            } else {
+                mensagemSucesso.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
