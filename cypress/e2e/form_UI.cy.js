@@ -18,9 +18,9 @@ describe('Testes automatizados de UI para o formulário de cadastro de usuário'
     })
 
     it('Confirmação de E-mail não preenchido', () => {
-      cy.preencherFormulario('Nome', 'harry@gmail.com', ' ', 'Oitocaracteres123')
+      cy.preencherFormulario('Nome', 'harry@gmail.com', ' ', 'Oitocaracteres123@!')
       cy.get('[data-cy="botao-submit"]').click()
-      cy.get('[data-cy="erro-confirmar-email"]').should('have.text', 'Os e-mails não coincidem.')
+      cy.get('[data-cy="erro-confirmar-email"]').should('have.text', 'A confirmação de e-mail é obrigatória.')
     })
 
     it('Senha não preenchida', () => {
