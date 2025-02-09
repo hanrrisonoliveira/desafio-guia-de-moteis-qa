@@ -15,6 +15,7 @@ describe('Testes automatizados de UI para o formulário de cadastro de usuário'
       cy.preencherFormulario('Nome', ' ', 'harry@gmail.com', 'Oitocaracteres123')
       cy.get('[data-cy="botao-submit"]').click()
       cy.get('[data-cy="erro-email"]').should('have.text', 'O e-mail é obrigatório.')
+      cy.get('[data-cy="erro-confirmar-email"]').should('have.text', 'Os e-mails não coincidem.')
     })
 
     it('Confirmação de E-mail não preenchido', () => {
@@ -32,6 +33,9 @@ describe('Testes automatizados de UI para o formulário de cadastro de usuário'
     it('Todos os campos não preenchidos', () => {
       cy.preencherFormulario('', '', '', '')
       cy.get('[data-cy="botao-submit"]').click()
+      cy.get('[data-cy="erro-nome"]').should('have.text', 'O nome é obrigatório.')
+      cy.get('[data-cy="erro-email"]').should('have.text', 'O e-mail é obrigatório.')
+      cy.get('[data-cy="erro-confirmar-email"]').should('have.text', 'A confirmação de e-mail é obrigatória.')
       cy.get('[data-cy="erro-senha"]').should('have.text', 'A senha deve ter no mínimo 8 caracteres, 1 letra maiúscula e 1 número.')
     })
   })
