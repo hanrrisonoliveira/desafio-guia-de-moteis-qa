@@ -54,13 +54,9 @@ npm install
 
 ## Execução dos testes
 
-### Para executar os testes via interface do Cypress:
++ Executar os testes:
+```
+cd \Testes de API - (Jest)\__tests__
 
-```
-npx cypress open
-```
-### Para executar todos os testes via terminal de comando: 
-
-```
-npx cypress run
+npx jest
 ```
