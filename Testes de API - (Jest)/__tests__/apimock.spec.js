@@ -84,9 +84,9 @@ describe ('Testes do tipo /POST', () => {
 
     it('Deve retornar o status 400 quando o campo obrigatório estiver ausente via POST', async () => {
         const response = await request(API_URL).post('/posts') 
-            .send({});
-    
-        expect(response.status).toBe(400);  // Esperando um erro 400
-        console.log(response.body);  // Mostra o corpo da resposta, que pode incluir uma mensagem de erro
-    });
+            .send({})
+
+        expect(response.status).toBe(400)
+        console.log(response.body)
+    })
 })
