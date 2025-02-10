@@ -16,5 +16,9 @@ export default function () {
     'tempo de reposta é < 500ms': (r) => r.timings.duration < 500
   })
 
+  if (response.status !== 200) {
+    console.error(`Erro: ${response.status}`)
+  }
+
   sleep(1)
 }
