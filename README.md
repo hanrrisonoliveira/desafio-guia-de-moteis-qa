@@ -17,7 +17,7 @@ Este repositório contém o código para o desafio do Processo Seletivo de Engen
 - **Pasta: Testes de Performance - K6**  
   Contém os testes de performance utilizando o K6, uma ferramenta para automação de testes de carga e desempenho.
 
-## Tecnologias Usadas
+## Tecnologias Utilizadas
 - **Cypress**: Para testes de UI e automação de interações com o usuário.
 - **Jest + Supertest**: Para testes de APIs e validação de endpoints.
 - **K6**: Para testes de performance e análise de carga.
